@@ -3,7 +3,8 @@
 Verify the config for modules or functions, set the required properties and check the input.
 
 ```js
-const verify = require('verify')
+
+const verify = require('./dist/index.js')
 
 const properties = {
   api_key: {
