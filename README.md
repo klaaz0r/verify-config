@@ -1,7 +1,31 @@
-# starwars-names
+# Verify Input
 
-[![travis build](https://img.shields.io/travis/kentcdodds/starwars-names.svg?style=flat-square)](https://travis-ci.org/kentcdodds/starwars-names)
-[![codecov coverage](https://img.shields.io/codecov/c/github/kentcdodds/starwars-names.svg?style=flat-square)](https://codecov.io/github/kentcdodds/starwars-names)
-[![version](https://img.shields.io/npm/v/starwars-names.svg?style=flat-square)](http://npm.im/starwars-names)
-[![downloads](https://img.shields.io/npm/dm/starwars-names.svg?style=flat-square)](http://npm-stat.com/charts.html?package=starwars-names&from=2015-08-01)
-[![MIT License](https://img.shields.io/npm/l/starwars-names.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+Verify the config for modules or functions, set the required properties and check the input.
+
+```
+const properties = {
+  api_key: {
+    required: true,
+    type: String
+  },
+  route: {
+    required: true,
+    type: Function
+  },
+  port: {
+    required: false,
+    type: Number,
+    default: 8080
+  }
+}
+
+const config = {
+  api_key: '1234',
+  route: function(req, res, next) {
+    res.redirect('/', next)
+  }
+}
+
+const { route, api_key, port } = verifyConfig(properties, config)
+// result: api_key = 1234, port = 8080
+```
