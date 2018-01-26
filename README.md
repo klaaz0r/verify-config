@@ -2,7 +2,9 @@
 
 Verify the config for modules or functions, set the required properties and check the input.
 
-```
+```js
+const verify = require('verify')
+
 const properties = {
   api_key: {
     required: true,
@@ -26,6 +28,6 @@ const config = {
   }
 }
 
-const { route, api_key, port } = verifyConfig(properties, config)
+const { route, api_key, port } = verify(properties, config)
 // result: api_key = 1234, port = 8080
 ```
